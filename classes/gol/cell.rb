@@ -8,9 +8,9 @@ class Cell
     @alive = alive
   end
 
-  def alive?; alive; end
-  
-  def dead?; !alive; end
+  def alive?; @alive; end
+
+  def dead?; !@alive; end
 
   def die!
     @alive = false
