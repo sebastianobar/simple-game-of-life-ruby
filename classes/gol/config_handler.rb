@@ -65,7 +65,6 @@ class ConfigHandler
     @config["rows"] = rows
     @config["columns"] = columns
     @config["initial_alive_cells"] = initial_alive_cells
-    puts @config
   end
 
 end

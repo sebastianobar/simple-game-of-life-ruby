@@ -14,6 +14,7 @@ class Grid
     end
   end
 
+  # Find all alive neighours around a cell
   def live_neighbours_around_cell(cell)
     live_neighbours = []
     # Neighbour to the North-East
@@ -59,10 +60,10 @@ class Grid
     live_neighbours
   end
 
-
+  # Calculate new generation grid from
   def calc_new_generation
     @current_gen_same_as_prev = true
-    # Prepare grid clone
+    # Prepare grid clone creating a clone to avoid wrong cells neighbours status
     next_gen_cell_board = Array.new(rows) do |row|
       Array.new(cols) do |col|
         Cell.new(col, row, cell_board[row][col].alive?)
@@ -83,7 +84,7 @@ class Grid
     @cell_board = next_gen_cell_board;
   end
 
-
+  # Handle printing grid on the console
   def print
     @cell_board.each do |row|
       string_row_separator = '-'
