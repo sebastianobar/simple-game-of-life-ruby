@@ -4,13 +4,16 @@ require_relative "config_handler"
 class GameOfLife
   attr_accessor :grid, :generation, :current_gen_same_as_prev
 
-  def initialize()
+  def initialize(use_json_config = false)
     @current_gen_same_as_prev = false
     initial_config = ConfigHandler.new()
     begin
-      initial_config.parseAndValidateConfig
-    rescue JSON::Schema::ValidationError => e
-      e.message
+      if use_json_config
+        initial_config.parseAndValidateJsonConfig
+      elsif
+        initial_config.parseAndValidateCustomConfig
+      end
+    rescue StandardError => e
       puts "Invalid config, using defaults"
     end
     @grid = Grid.new(initial_config.config["rows"], initial_config.config["columns"], initial_config.config["initial_alive_cells"])
