@@ -3,12 +3,12 @@ require_relative "cell"
 class Grid
   attr_accessor :rows, :cols, :cell_board, :cells
   
-  def initialize(rows=8, cols=8)
+  def initialize(rows=8, cols=8, initial_alives_cells=[{x: 0, y: 0}])
     @rows = rows
     @cols = cols
     @cell_board = Array.new(rows) do |row|
       Array.new(cols) do |col|
-        Cell.new(col, row, [true, false].sample)
+        Cell.new(col, row, initial_alives_cells.include?({x:col, y:row}))
       end
     end
   end
