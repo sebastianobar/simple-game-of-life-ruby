@@ -23,6 +23,8 @@ class GameOfLife
 
   
   def print
+    puts ""
+    puts ""
     puts "Generation #{@generation}"
     puts "#{@grid.rows} x #{@grid.cols}"
     @grid.print()
