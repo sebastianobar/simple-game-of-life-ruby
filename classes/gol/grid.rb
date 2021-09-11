@@ -1,9 +1,10 @@
 require_relative "cell"
 
 class Grid
-  attr_accessor :rows, :cols, :cell_board, :cells
+  attr_accessor :rows, :cols, :cell_board, :cells, :current_gen_same_as_prev
   
   def initialize(rows=8, cols=8, initial_alives_cells=[{"x"=> 0, "y"=> 0}])
+    @current_gen_same_as_prev = false
     @rows = rows
     @cols = cols
     @cell_board = Array.new(rows) do |row|
@@ -60,6 +61,7 @@ class Grid
 
 
   def calc_new_generation
+    @current_gen_same_as_prev = true
     # Prepare grid clone
     next_gen_cell_board = Array.new(rows) do |row|
       Array.new(cols) do |col|
@@ -71,8 +73,10 @@ class Grid
         live_neighbours_count = live_neighbours_around_cell(element).length()
         if element.alive? && (live_neighbours_count < 2 || live_neighbours_count > 3)
           next_gen_cell_board[element.y][element.x].die!
+          @current_gen_same_as_prev = false
         elsif element.dead? && live_neighbours_count == 3
           next_gen_cell_board[element.y][element.x].revive!
+          @current_gen_same_as_prev = false
         end
       end
     end
