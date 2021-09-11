@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "required": ["rows", "columns", "initial_alive_cells"],
+  "properties": {
+    "rows": { 
+      "type": "integer" 
+    },
+    "columns": { 
+      "type": "integer" 
+    },
+    "initial_alive_cells": { 
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["x", "y"],
+        "properties": {
+          "x": { "type": "integer" },
+          "y": { "type": "integer" }
+        }
+      }
+    }
+  }
+}
