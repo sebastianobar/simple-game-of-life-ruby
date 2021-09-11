@@ -11,6 +11,7 @@ class ConfigHandler
     @config= {
       "rows"=> 8,
       "columns"=> 8,
+      "actual_gen"=> 0,
       "initial_alive_cells"=> [
         {
           "x"=> 0,

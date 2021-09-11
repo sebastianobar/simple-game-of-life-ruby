@@ -1,11 +1,14 @@
 {
   "type": "object",
-  "required": ["rows", "columns", "initial_alive_cells"],
+  "required": ["rows", "columns", "actual_gen", "initial_alive_cells"],
   "properties": {
     "rows": { 
       "type": "integer" 
     },
     "columns": { 
+      "type": "integer" 
+    },
+    "actual_gen": { 
       "type": "integer" 
     },
     "initial_alive_cells": { 

@@ -14,7 +14,7 @@ class GameOfLife
       puts "Invalid config, using defaults"
     end
     @grid = Grid.new(initial_config.config["rows"], initial_config.config["columns"], initial_config.config["initial_alive_cells"])
-    @generation = 0
+    @generation = initial_config.config["actual_gen"]
   end
 
   def next_gen
