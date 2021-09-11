@@ -27,3 +27,5 @@ ruby main.rb
 ```
 
 Outputs data will be written on the console
+
+Application will stop if the grid will remain the same at next generation
